@@ -23,8 +23,8 @@
 	});
 </script>
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Intersection Observer</title>
+	<meta name="description" content="Intersection Observer" />
 </svelte:head>
 
 <section>
