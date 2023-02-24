@@ -1,5 +1,6 @@
 <script lang="ts">
   import Logo from '$lib/Logo.svelte';
+	import Marquee from '$lib/Marquee.svelte';
   import { onMount } from 'svelte';
 
   export let data;
@@ -49,12 +50,12 @@
       <h2 class="text-xl uppercase">Subscribe</h2>
   </header>
   <div class="max-w-7xl mx-auto py-2 border-b-2 border-gray-800 border-dashed">
-    *Insert Marquee Here*
+    <Marquee />
   </div>
 </section>
 
 <section class="max-w-7xl mx-auto flex justify-center gap-4 pt-4">
-  <div class="hidden lg:block">
+  <div class="hidden lg:block lg:w-fit lg:bg-gray-100">
     left
   </div>
   <div class="max-w-2xl mx-auto">
@@ -62,7 +63,7 @@
     <img src="https://picsum.photos/600/300" alt="img" class="w-full h-96 bg-black" />
     <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim sed alias mollitia cum vero voluptatibus dolore, corporis assumenda ipsa vel, aut magni reprehenderit voluptate. Minus eius iste obcaecati ratione doloribus?</p>
   </div>
-  <div class="hidden lg:block">
+  <div class="hidden lg:block lg:w-fit lg:bg-gray-100">
     right
   </div>
 
@@ -80,4 +81,23 @@
     <p class="text-sm line-clamp-3">{post.excerpt}</p>
   </div>
   {/each}
+</section>
+
+<section>
+  <div class="max-w-7xl mx-auto py-2 border-b-2 border-t-2 border-dashed border-gray-800">
+    <ul class="flex justify-between items-center text-xl lg:text-2xl px-4">
+      <Logo />
+      <Logo />
+      <Logo />
+      <Logo />
+      <Logo />
+    </ul>
+  </div>
+
+  <footer class="max-w-7xl mx-auto flex justify-center items-center border-b-4 border-gray-900">
+    <div class="mx-auto">
+      <h1 class="font-bold text-4xl tracking-[-0.07em]">Intersection Observer</h1>
+    </div>
+  </footer>
+
 </section>
