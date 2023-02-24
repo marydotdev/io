@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Logo from '$lib/Logo.svelte';
   import { onMount } from 'svelte';
 
   export let data;
@@ -27,7 +28,8 @@
 
 <section>
   <div class="max-w-7xl mx-auto py-2 border-b-2 border-gray-800">
-    <ul class="flex justify-between items-center text-xl lg:text-2xl">
+    <ul class="flex justify-between items-center text-xl lg:text-2xl px-4">
+      <Logo />
       <li>Link</li>
       <li>Link</li>
       <li>Link</li>
@@ -41,7 +43,7 @@
       <h2>{day}</h2>
     </div>
     <div class="mx-auto">
-      <h1 class="font-medium text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight">Intersection Observer</h1>
+      <h1 class="font-bold text-4xl lg:text-7xl xl:text-8xl tracking-[-0.07em]">Intersection Observer</h1>
     </div>
     <div class="hidden md:flex md:items-center md:mx-auto">
       <h2 class="text-xl uppercase">Subscribe</h2>
@@ -51,19 +53,19 @@
   </div>
 </section>
 
-<section class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-12 gap-4 pt-4">
-  <div class="col-span-1 sm:col-span-2 lg:col-span-6">
+<section class="max-w-7xl mx-auto flex justify-center gap-4 pt-4">
+  <div class="hidden lg:block">
+    left
+  </div>
+  <div class="max-w-2xl mx-auto">
     <h3 class="text-3xl tracking-tight font-medium">Title</h3>
     <img src="https://picsum.photos/600/300" alt="img" class="w-full h-96 bg-black" />
     <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim sed alias mollitia cum vero voluptatibus dolore, corporis assumenda ipsa vel, aut magni reprehenderit voluptate. Minus eius iste obcaecati ratione doloribus?</p>
   </div>
-  <div class="col-span-1 sm:col-span-1 lg:col-span-4">
-    <h3 class="text-3xl tracking-tight font-medium">Title</h3>
-    <img src="https://picsum.photos/300/400" alt="img" class="w-full h-96 bg-black" />
-    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim sed alias mollitia cum vero voluptatibus dolore, corporis assumenda ipsa vel.</p>
+  <div class="hidden lg:block">
+    right
   </div>
-  <div class="hidden lg:block lg:col-span-2 bg-gray-200 p-2">
-  </div>
+
 </section>
 
 <section class="max-w-7xl mx-auto pt-8">
