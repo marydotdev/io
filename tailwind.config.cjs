@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         'sans': ['Inter', ...defaultTheme.fontFamily.sans],
       },
+      backgroundImage: {
+        'paper': "url('https://www.transparenttextures.com/patterns/paper-fibers.png')",
+      },
       animation: {
         marquee: 'marquee 30s linear infinite',
         marquee2: 'marquee2 30s linear infinite'

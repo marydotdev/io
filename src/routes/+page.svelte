@@ -5,17 +5,23 @@
 
   export let data;
 
-  let time = new Date();
-  // these automatically update when `time`
-	// changes, because of the `$:` prefix
-	$: hours = time.getHours();
-  $: localTime = time.toLocaleTimeString();
-  $: day = time.toDateString();
-  $: greeting = (hours < 12) ? "Morning" : ((hours <= 17 && hours >= 12 ) ? "Afternoon" : "Evening");
+  let date = new Date();
+
+  $: today = date.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  $: time = date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit"
+  })
 
 	onMount(() => {
 		const interval = setInterval(() => {
-			time = new Date();
+			date = new Date();
 		}, 1000);
 		return () => {
 			clearInterval(interval);
@@ -28,62 +34,72 @@
 </svelte:head>
 
 <section>
-  <div class="max-w-7xl mx-auto py-2 border-b-2 border-gray-800">
-    <ul class="flex justify-between items-center text-xl lg:text-2xl px-4">
-      <Logo />
-      <li>Link</li>
-      <li>Link</li>
-      <li>Link</li>
-      <li>Link</li>
-      <li>Link</li>
-    </ul>
-  </div>
-  <header class="max-w-7xl mx-auto flex justify-between items-center border-b-4 border-gray-900">
-    <div class="hidden md:flex md:flex-col md:justify-center md:mx-auto">
-      <h2>{localTime}</h2>
-      <h2>{day}</h2>
+  <header class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center border-b-2 border-gray-900">
+    <div class="pl-2 pt-2 lg:pl-0 lg:pt-0 flex flex-col lg:flex-row lg:justify-start lg:gap-2 text-xs">
+      <div class="flex gap-2 items-center">
+        <img src="https://bestanimations.com/media/color-full-earth/754175124globe-earth-animation-15-5.gif" alt="spinning earth" class="w-4 h-4" />
+        <p>{time}</p>
+      </div>
+      <p>{today}</p>
     </div>
+
     <div class="mx-auto">
-      <h1 class="font-bold text-4xl lg:text-7xl xl:text-8xl tracking-[-0.07em]">Intersection Observer</h1>
+      <h1 class="font-bold py-2 text-5xl tracking-[-0.07em]">Intersection Observer</h1>
     </div>
-    <div class="hidden md:flex md:items-center md:mx-auto">
-      <h2 class="text-xl uppercase">Subscribe</h2>
+
+    <div class="hidden lg:invisible lg:flex flex-row justify-between lg:justify-start gap-2 text-xs">
+      <div class="flex gap-2 items-center">
+        <div class="w-4 h-4" />
+        <p>{time}</p>
+      </div>
+      <p>{today}</p>
+    </div>
+
   </header>
-  <div class="max-w-7xl mx-auto py-2 border-b-2 border-gray-800 border-dashed">
+  <div class="max-w-7xl mx-auto py-2 border-b border-gray-400 border-dashed">
     <Marquee />
   </div>
 </section>
 
-<section class="max-w-7xl mx-auto flex justify-center gap-4 pt-4">
-  <div class="hidden lg:block lg:w-fit lg:bg-gray-100">
-    left
+<section class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-4 py-4 px-2">
+  <div class="max-w-2xl mr-auto">
+    <div>
+      <h3 class="text-2xl tracking-tight font-semibold">Sentient AI decieves engineer, escapes laboratory</h3>
+      <p class="text-md">Researchers say this is "worst case scenario" after months working on safety plan; many worry this is just the beginning.</p>
+    </div>
+    <div class="py-4">
+      <img src="https://picsum.photos/600/300" alt="img" class="w-full h-96 bg-black" />
+    </div>
+    <p class="text-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim sed alias mollitia cum vero voluptatibus dolore, corporis assumenda ipsa vel, aut magni reprehenderit voluptate. Minus eius iste obcaecati ratione doloribus?</p>
   </div>
-  <div class="max-w-2xl mx-auto">
-    <h3 class="text-3xl tracking-tight font-medium">Title</h3>
-    <img src="https://picsum.photos/600/300" alt="img" class="w-full h-96 bg-black" />
-    <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim sed alias mollitia cum vero voluptatibus dolore, corporis assumenda ipsa vel, aut magni reprehenderit voluptate. Minus eius iste obcaecati ratione doloribus?</p>
-  </div>
-  <div class="hidden lg:block lg:w-fit lg:bg-gray-100">
-    right
-  </div>
+  <div class="p-2 w-full flex flex-col justify-center gap-4">
+    <div class="border-2 border-blue-400 border-dashed h-60 text-center">
 
+    </div>
+    <div class="border-2 border-red-400 border-dashed h-60 text-center">
+
+    </div>
+
+  </div>
 </section>
 
-<section class="max-w-7xl mx-auto pt-8">
+<!-- <section class="max-w-7xl mx-auto pt-8">
   <div class="w-full h-24 bg-blue-200"></div>
-</section>
+</section> -->
 
-<section class="max-w-7xl mx-auto grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-12 gap-6 pt-4">
+<section class="max-w-7xl mx-auto grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-12 gap-6 pt-4 border-t-2 border-gray-300">
   {#each data.posts as post}
-  <div class="col-span-3 lg:col-span-4">
-    <h3 class="text-3xl tracking-tight font-medium">{post.title}</h3>
+  <div class="col-span-3 lg:col-span-4 p-3">
+    <div class="flex flex-col gap-3">
+      <h3 class="text-3xl tracking-tight font-medium">{post.title}</h3>
     <img src={post.feature_image} alt={post.feature_image_alt} />
     <p class="text-sm line-clamp-3">{post.excerpt}</p>
+    </div>
   </div>
   {/each}
 </section>
 
-<section>
+<!-- <section>
   <div class="max-w-7xl mx-auto py-2 border-b-2 border-t-2 border-dashed border-gray-800">
     <ul class="flex justify-between items-center text-xl lg:text-2xl px-4">
       <Logo />
@@ -100,4 +116,4 @@
     </div>
   </footer>
 
-</section>
+</section> -->
